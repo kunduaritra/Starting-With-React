@@ -1,12 +1,12 @@
+import './ExpenseItem.css'
 function ExpenseItem (){
     return (
-        <div>
-    <h2>Expense Item!</h2>
-    <ul>
-        <li>Food Rs 10</li>
-        <li>Petrol Rs 100</li>
-        <li>Movies Rs 200</li>    
-    </ul>
+        <div className='expense-item'>
+            <div>April 14th 2023</div>
+            <div className='expense-item__description'>
+                <h2>Car Insurence</h2>
+                <div className='expense-item__price'>₹5000</div>
+            </div>
     </div>
     );
 }
