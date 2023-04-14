@@ -6,7 +6,7 @@ function ExpenseItem (){
     const locationOfExpenditure = 'Acko Car Insurence'
     return (
         <div className='expense-item'>
-            <div>{expenseDate.toISOString}</div>
+            <div>{expenseDate.toString()}</div>
             <div className='expense-item__description'>
                 <h2>{expenseTitle} : Place: {locationOfExpenditure}</h2>
                 <div className='expense-item__price'>{expenseAmount}</div>
