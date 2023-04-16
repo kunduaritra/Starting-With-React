@@ -1,5 +1,8 @@
-import ExpenseItem from "./components/ExpenseItem";
-function App() {
+import react from "react";
+import Card from './components/UI/Card'
+import ExpenseItem from "./components/Expense/ExpenseItem";
+import ExpenseDate from "./components/Expense/ExpenseDate";
+const App = () =>{
   const expenses = [
     {
       id: 'e1',
@@ -32,8 +35,7 @@ function App() {
   return (
     <div>
       <h2>Let's get started!</h2>
-      {/* for(let i=0; i; i++){ */}
-      <div>
+      <Card>
       {expenses.map((exp) => (
           <ExpenseItem
             title={exp.title}
@@ -42,7 +44,7 @@ function App() {
             location={exp.locationOfExpenditure}
           />
         ))}
-      </div>
+      </Card>
     </div>
   );
 }
