@@ -1,7 +1,6 @@
 import react from "react";
 import Card from './components/UI/Card'
 import ExpenseItem from "./components/Expense/ExpenseItem";
-import ExpenseDate from "./components/Expense/ExpenseDate";
 const App = () =>{
   const expenses = [
     {
@@ -37,7 +36,7 @@ const App = () =>{
       <h2>Let's get started!</h2>
       <Card>
       {expenses.map((exp) => (
-          <ExpenseItem
+          <ExpenseItem id={exp.id}
             title={exp.title}
             date={exp.date}
             amount={exp.amount}
