@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "../UI/Card";
 const ExpenseDetails = (props) => {
-    const deleteElement = () =>{
-        console.log('Delete')
+    const [title, setTitle] = useState(props.title)
+    const [expense, setExpense] = useState (props.amount)
+    const changeTitle = () =>{
+        setTitle('Changed Title')
+        console.log(title)
+    }
+    const changeExpence = () =>{
+        setExpense('$100')
     }
     return (
-            <Card className='expense-item__description'>
-                <h2>{props.title} : Place: {props.location}</h2>
-                <div className='expense-item__price'>{props.amount}</div>
-                <button onClick={deleteElement}>Delete Expense</button>
-            </Card>
+            <div className='expense-item__description'>
+                <h2>{title} : Place: {props.location}</h2>
+                <div className='expense-item__price'>{expense}</div>
+                <button onClick={changeExpence}>Expense $100</button>
+                <button onClick={changeTitle}>Change Title</button>
+            </div>
     )
 }
 
