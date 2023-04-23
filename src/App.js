@@ -1,7 +1,7 @@
 import react from "react";
 import Card from './components/UI/Card'
 import ExpenseItem from "./components/Expense/ExpenseItem";
-import ExpenseFrom from "./components/Expense/ExpenseForm";
+import NewExpense from "./components/NewExpense/NewExpense.js";
 const App = () =>{
   const expenses = [
     {
@@ -34,8 +34,7 @@ const App = () =>{
   ];
   return (
     <div>
-      <h2>Let's get started!</h2>
-      <Card>
+      <NewExpense />
       {expenses.map((exp) => (
           <ExpenseItem
             title={exp.title}
@@ -44,8 +43,6 @@ const App = () =>{
             location={exp.locationOfExpenditure}
           />
         ))}
-        <ExpenseFrom />
-      </Card>
     </div>
   );
 }
