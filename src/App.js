@@ -1,6 +1,7 @@
 import react from "react";
 import Card from './components/UI/Card'
 import ExpenseItem from "./components/Expense/ExpenseItem";
+import ExpenseFrom from "./components/Expense/ExpenseForm";
 const App = () =>{
   const expenses = [
     {
@@ -36,13 +37,14 @@ const App = () =>{
       <h2>Let's get started!</h2>
       <Card>
       {expenses.map((exp) => (
-          <ExpenseItem id={exp.id}
+          <ExpenseItem
             title={exp.title}
             date={exp.date}
             amount={exp.amount}
             location={exp.locationOfExpenditure}
           />
         ))}
+        <ExpenseFrom />
       </Card>
     </div>
   );
