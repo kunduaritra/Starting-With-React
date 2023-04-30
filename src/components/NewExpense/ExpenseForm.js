@@ -1,28 +1,17 @@
 import React, { useState } from "react";
-import ExpenseItem from "../Expense/ExpenseItem";
 import './ExpenseForm.css'
 
-const ExpenseFrom = () => {
+const ExpenseFrom = (props) => {
     const [enteredtitle, setEnteredTitle] = useState('')
     const [enteredAmount , setEnteredAmount ] = useState('')
     const [enteredDate  , setEnteredDate ] = useState('')
-    const addExpense = (event) => {
-        event.preventDefault();
-        const expenseObj = {
-            title: enteredtitle,
-            amount: enteredAmount,
-            date: new Date(enteredDate),
-        }
-        console.log(expenseObj)
-    }
     // const [userInput, setUserInput] = useState({
     //     enteredTitle: '',
     //     enterAmount: '',
     //     enterDate: ''
     // })
-
     const titleChangeHandler = (event) =>{
-        console.log('changed title')
+        // console.log('changed title')
         setEnteredTitle(event.target.value)
         // Method 2
         // setUserInput({
@@ -35,7 +24,7 @@ const ExpenseFrom = () => {
         // })
     }
     const amountChangeHandler = (event) =>{
-        console.log('changed amount')
+        // console.log('changed amount')
         setEnteredAmount(event.target.value)
         // setUserInput({
         //     ...userInput,
@@ -43,27 +32,43 @@ const ExpenseFrom = () => {
         // })
     }
     const dateChangeHandler = (event) =>{
-        console.log('changed date')
+        // console.log('changed date')
         setEnteredDate(event.target.value)
         // setUserInput({
         //     ...userInput,
         //     enterDate: event.target.value,
         // })
     }
+    const addExpense = (event) => {
+        event.preventDefault();
+        const expenseData = {
+            title: enteredtitle,
+            amount: enteredAmount,
+            date: new Date(enteredDate),
+        }
+        props.onSaveExpenseData(expenseData);
+        setEnteredTitle('');
+        setEnteredAmount('');
+        setEnteredDate('');
+    }
     return(
         <form onSubmit={addExpense}>
             <div className="new-expense__controls">
                 <div className="new-expense__control">
                     <label htmlFor="title">Title:</label>
-                    <input type="text" id="title" onChange={titleChangeHandler} />
+                    <input 
+                    type="text" 
+                    id="title" 
+                    value={enteredtitle} 
+                    onChange={titleChangeHandler} />
                 </div>
                 <div className="new-expense__control">
                     <label htmlFor="amount">Amount:</label>
-                    <input type="number" id="amount" min="0.01" step="0.01" onChange={amountChangeHandler} />
+                    <input type="number" id="amount" min="0.01" step="0.01" value={enteredAmount} onChange={amountChangeHandler} />
                 </div>
                 <div className="new-expense__control">
                     <label htmlFor="title">Date:</label>
-                    <input type="date" id="date" min="2019-01-01" max="2023-04-24" onChange={dateChangeHandler} />
+                    <input type="date" id="date" min="2019-01-01" max="2023-04-24" value={enteredDate} onChange={dateChangeHandler} />
                 </div>
                 </div>
             <div className="new-expense__actions">
