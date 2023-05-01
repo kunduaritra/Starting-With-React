@@ -1,9 +1,9 @@
-import react from "react";
+import react, { useState } from "react";
 import Card from './components/UI/Card'
 import ExpenseItem from "./components/Expense/ExpenseItem";
 import NewExpense from "./components/NewExpense/NewExpense.js";
 const App = () =>{
-  const expenses = [
+  const [expenses, setExpenses] = useState([
     {
       id: 'e1',
       title: 'Toilet Paper',
@@ -30,18 +30,19 @@ const App = () =>{
       amount: 450,
       date: new Date(2021, 5, 12),
       locationOfExpenditure: 'Sharma farniture',
-    },
-  ];
-  const addExpenseHandler = expenses =>{
-    console.log('In App js')
-    console.log(expenses)
-  }
+    }
+  ])
+    const addExpenseHandler = expense => {
+      setExpenses(prevExpenses => [expense, ...prevExpenses]);
+      console.log(expense)
+    }
 
   return (
     <div>
       <NewExpense onAddExpense= {addExpenseHandler} />
       {expenses.map((exp) => (
           <ExpenseItem
+            key={exp.id}
             title={exp.title}
             date={exp.date}
             amount={exp.amount}
