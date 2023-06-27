@@ -68,7 +68,7 @@ const ExpenseFrom = (props) => {
                 </div>
                 <div className="new-expense__control">
                     <label htmlFor="title">Date:</label>
-                    <input type="date" id="date" min="2019-01-01" max="2023-04-24" value={enteredDate} onChange={dateChangeHandler} />
+                    <input type="date" id="date" min="2019-01-01" max="2023-06-28" value={enteredDate} onChange={dateChangeHandler} />
                 </div>
                 </div>
             <div className="new-expense__actions">
