@@ -36,23 +36,26 @@ const DUMMY_EXPENSE = [
 
 const App = () =>{
   const [expenses, setExpenses] = useState(DUMMY_EXPENSE);
+  const [filteredYear, setFilteredYear] = useState('2021');
 
   const addExpenseHandler = expense => {
     setExpenses((prevExpenses) => {
       return [expense, ...prevExpenses];
     })
   }
-  const [filteredYear, setFilteredYear] = useState('2020');
 
   const filterChangeHandler = selectedYear => {
     setFilteredYear(selectedYear);
   }
+  const FilterExpenses = expenses.filter(expense => {
+    return expense.date.getFullYear().toString()=== filteredYear;
+  });
 
   return (
-    <Card>
+    <Card className="expenses">
       <NewExpense onAddExpense= {addExpenseHandler} />
       <ExpenseFilter selected={filteredYear} onChangeFilter = {filterChangeHandler} />
-      {expenses.map((exp, index) => (
+      {FilterExpenses.map((exp, index) => (
           <ExpenseItem
             key={exp.id}
             title={exp.title}
