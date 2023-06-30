@@ -1,7 +1,7 @@
 import { useState } from "react";
-import ExpenseItem from "./components/Expense/ExpenseItem";
 import NewExpense from "./components/NewExpense/NewExpense.js";
 import ExpenseFilter from "./components/Expense/ExpenseFilter";
+import ExpenseList from "./components/Expense/ExpenseList.js";
 import Card from "./components/UI/Card";
 
 const DUMMY_EXPENSE = [
@@ -47,7 +47,7 @@ const App = () =>{
   const filterChangeHandler = selectedYear => {
     setFilteredYear(selectedYear);
   }
-  const FilterExpenses = expenses.filter(expense => {
+  const filterExpenses = expenses.filter(expense => {
     return expense.date.getFullYear().toString()=== filteredYear;
   });
 
@@ -55,15 +55,7 @@ const App = () =>{
     <Card className="expenses">
       <NewExpense onAddExpense= {addExpenseHandler} />
       <ExpenseFilter selected={filteredYear} onChangeFilter = {filterChangeHandler} />
-      {FilterExpenses.map((exp, index) => (
-          <ExpenseItem
-            key={exp.id}
-            title={exp.title}
-            date={exp.date}
-            amount={exp.amount}
-            location={exp.locationOfExpenditure}
-          />
-        ))}
+      <ExpenseList items = {filterExpenses}/>
     </Card>
   );
 }
